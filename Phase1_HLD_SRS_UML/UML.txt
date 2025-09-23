@@ -1,0 +1,20 @@
+digraph EcommerceUML {
+    rankdir=LR;
+    node [shape=record];
+
+    Customer [label="{Customer|+ customer_id: String\l+ name: String\l+ email: String\l+ city: String\l+ state: String\l+ country: String\l+ signup_date: Date\l+ loyalty_status: String\l}"];
+
+    Product [label="{Product|+ product_id: String\l+ product_name: String\l+ category: String\l+ subcategory: String\l+ brand: String\l+ price: Decimal\l+ stock_level: Integer\l}"];
+
+    Order [label="{Order|+ order_id: String\l+ customer_id: String\l+ product_id: String\l+ order_date: Date\l+ quantity: Integer\l+ unit_price: Decimal\l+ payment_method: String\l+ delivery_status: String\l}"];
+
+    InventoryItem [label="{InventoryItem|+ inventory_id: String\l+ product_id: String\l+ warehouse_id: String\l+ stock_level: Integer\l+ reorder_level: Integer\l+ last_restock_date: Date\l}"];
+
+    WebsiteInteraction [label="{WebsiteInteraction|+ session_id: String\l+ customer_id: String\l+ page_visited: String\l+ time_spent_seconds: Integer\l+ timestamp: DateTime\l}"];
+
+    // Relationships with column names
+    Order -> Customer [label="customer_id"];
+    Order -> Product [label="product_id"];
+    InventoryItem -> Product [label="product_id"];
+    WebsiteInteraction -> Customer [label="customer_id"];
+}
